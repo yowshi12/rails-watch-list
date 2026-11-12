@@ -1,0 +1,17 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://img.freepik.com/premium-vector/movie-theater-cinema-design-illustration-banner-template_703262-166.jpg);">
+  <div class="container">
+    <h1><em>Classic</em></h1>
+  </div>
+  <div class="card">
+    <div class="card-information">
+      <% @list.bookmarks.each do |bookmark| %>
+        <h2><%= bookmark.movie.title %></h2>
+        <p><%= bookmark.movie.overview %></p>
+        <p><%= bookmark.movie.poster_url %></p>
+        <p><%= "⭐" * bookmark.movie.rating %></p>
+        <p><%= bookmark.comment %></p>
+        <%= link_to "delete this movie", bookmark_path(bookmark), class: "btn btn-primary", data: {turbo_method: :delete, turbo_cofirm: "Are you sure?"} %>
+      <% end %>
+    </div>
+  </div>
+</div>
